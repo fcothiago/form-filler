@@ -1,5 +1,6 @@
 from pynput.keyboard import Key, Controller
 from keyboard.input import shortcut
+from format.conversion import convert,reserved
 
 class autotype():
     def __init__(self,command=[Key.ctrl,"1"]):
@@ -12,8 +13,8 @@ class autotype():
         self.__keyboard__ = Controller()
 
     def typeKey(self,key):
-        self.__keyboard__.press(key)
-        self.__keyboard__.release(key)
+        self.__keyboard__.press(convert(key))
+        self.__keyboard__.release(convert(key))
     
     def typeText(self,text):
         try:
@@ -26,7 +27,7 @@ class autotype():
         self.sc.wait_keys()
         self.typeText(self.start_with)
         for i in self.keys:
-            text = self.fields[i]
+            text = reserved()[i] if i in reserved().keys() else self.fields[i]
             self.typeText(text)
             self.typeText(self.between)
         self.typeText(self.end_with)
