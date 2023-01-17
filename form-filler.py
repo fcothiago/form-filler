@@ -73,6 +73,7 @@ if __name__ == "__main__":
                 elif cmd == "-k":
                     for j in range(i+1,len(sys.argv)):
                         keys.append(sys.argv[j])
+                    print("Press CTRL 1 to fill")
                     autofill(context,namespace,keys,command)
                     break
     except Exception as e:
