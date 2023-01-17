@@ -45,7 +45,7 @@ def askForFields(context,namespace):
             print(f'{field} is a reserved keyword')
             continue
         value = input(f"Input {field} value ")
-        context[ns][field] = value
+        context[ns]["fields"][field] = value
 
 if __name__ == "__main__":
     file = open(f'{os.path.dirname(__file__)}/context.json',"r")
