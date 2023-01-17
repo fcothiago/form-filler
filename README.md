@@ -15,7 +15,7 @@ Install pypunt using pip
     pip3 install pynput
 ```
 
-## Usage
+# Usage
 
 ## Keys and Namespace
 
