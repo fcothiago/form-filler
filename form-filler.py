@@ -28,7 +28,7 @@ def addNameSpace(context,namespace,start_with,end_with,between):
     context[namespace]["start_with"] = start_with
     context[namespace]["end_with"] = end_with
     context[namespace]["between"] = between
-    context[namespace]["fields"] = []
+    context[namespace]["fields"] = dict()
 
 def addField(context,namespace,field,text):
     if namespace not in context.keys():
@@ -68,14 +68,16 @@ if __name__ == "__main__":
             while i < len(sys.argv):
                 cmd = sys.argv[i]
                 if cmd == "-ns":
-                    i += 1
-                    namespace = sys.argv[i]
+                    namespace = sys.argv[i+1]
+                    i += 2
                 elif cmd == "-k":
                     for j in range(i+1,len(sys.argv)):
                         keys.append(sys.argv[j])
                     print("Press CTRL 1 to fill")
                     autofill(context,namespace,keys,command)
                     break
+                else:
+                    raise Exception("Invalid param")
     except Exception as e:
         print(e)
     file.close()
